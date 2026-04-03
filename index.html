@@ -249,6 +249,11 @@
         grid-template-columns: 1fr !important;
       }
 
+      /* Form appears first on mobile */
+      .contact-grid { grid-template-columns: 1fr !important; }
+      .contact-form-col { order: 1 !important; }
+      .contact-grid > div[style*="order:1"] { order: 2 !important; }
+
       /* Footer stacks on mobile */
       .footer-grid {
         grid-template-columns: 1fr 1fr !important;
@@ -731,10 +736,10 @@
   <!-- Background accent -->
   <div style="position:absolute;bottom:0;right:0;width:400px;height:400px;background:radial-gradient(ellipse at bottom right,rgba(184,151,90,0.1),transparent 70%);pointer-events:none;"></div>
 
-  <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:3rem;" class="contact-grid">
+  <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;" class="contact-grid">
 
-    <!-- Left: form -->
-    <div class="reveal" style="background:#FFFFFF;padding:2.75rem;box-shadow:0 8px 40px rgba(26,23,20,0.08),0 2px 8px rgba(26,23,20,0.04);">
+    <!-- Right: form (order:2 on desktop, order:1 on mobile handled by CSS) -->
+    <div class="reveal contact-form-col" style="background:#FFFFFF;padding:2.75rem;box-shadow:0 8px 40px rgba(26,23,20,0.08),0 2px 8px rgba(26,23,20,0.04);order:2;">
       <form id="quote-form" onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:1.25rem;">
 
         <input type="hidden" name="access_key" value="5e7fa305-9279-4411-90bd-75fc34a93e47" />
@@ -810,8 +815,8 @@
       </form>
     </div>
 
-    <!-- Right: info -->
-    <div class="reveal reveal-delay-1">
+    <!-- Left: info -->
+    <div class="reveal reveal-delay-1" style="order:1;">
       <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
         <div style="width:32px;height:1px;background:#B8975A;"></div>
         <span style="font-size:0.75rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#B8975A;">Get in Touch</span>
