@@ -788,13 +788,13 @@
         </div>
 
         <div>
-          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Email</label>
-          <input type="email" name="email" placeholder="jane@example.com" required style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
+          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Email <span style="color:#B8975A;font-size:0.7rem;text-transform:none;letter-spacing:0;">(at least one contact method required)</span></label>
+          <input type="email" id="form-email" name="email" placeholder="jane@example.com" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
         </div>
 
         <div>
-          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Phone (optional)</label>
-          <input type="tel" name="phone" placeholder="(555) 000-0000" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
+          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Phone</label>
+          <input type="tel" id="form-phone" name="phone" placeholder="(437) 494-0326" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
         </div>
 
         <div>
@@ -814,11 +814,11 @@
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;" class="two-col-grid">
           <div>
-            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Preferred Date</label>
+            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Preferred Date <span style="color:#C8C3BB;font-size:0.7rem;text-transform:none;letter-spacing:0;">(optional)</span></label>
             <input type="date" name="preferred_date" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
           </div>
           <div>
-            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Preferred Time</label>
+            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Preferred Time <span style="color:#C8C3BB;font-size:0.7rem;text-transform:none;letter-spacing:0;">(optional)</span></label>
             <select name="preferred_time" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;appearance:none;transition:border-color 0.2s ease;cursor:pointer;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'">
               <option value="" disabled selected>Select a time…</option>
               <option>Morning (8am – 12pm)</option>
@@ -1032,6 +1032,25 @@
     const form = e.target;
     const btn = form.querySelector('button[type="submit"]');
     const original = btn.innerHTML;
+
+    // Require at least email or phone
+    const email = document.getElementById('form-email').value.trim();
+    const phone = document.getElementById('form-phone').value.trim();
+    if (!email && !phone) {
+      document.getElementById('form-email').style.borderColor = '#9B2335';
+      document.getElementById('form-phone').style.borderColor = '#9B2335';
+      const err = form.querySelector('#contact-error');
+      if (!err) {
+        const msg = document.createElement('p');
+        msg.id = 'contact-error';
+        msg.style.cssText = 'font-size:0.8rem;color:#9B2335;margin-top:-0.5rem;';
+        msg.textContent = 'Please provide at least an email or phone number.';
+        document.getElementById('form-phone').parentNode.after(msg);
+      }
+      return;
+    }
+    const existingErr = form.querySelector('#contact-error');
+    if (existingErr) existingErr.remove();
 
     btn.innerHTML = 'Sending…';
     btn.disabled = true;
