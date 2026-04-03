@@ -214,6 +214,41 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @media (max-width: 767px) {
+      /* Contact section */
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+      }
+
+      /* Why MANE section */
+      #why-mane > div {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+      }
+
+      /* Hero content full width */
+      #hero-content {
+        max-width: 100% !important;
+      }
+
+      /* Section padding */
+      section { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+
+      /* Calculator grid */
+      #size-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+
+      /* Contact info icons */
+      .contact-grid > div:first-child { padding-bottom: 0; }
+
+      /* Two-col grids inside form stack on mobile */
+      .two-col-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 
@@ -684,10 +719,87 @@
   <!-- Background accent -->
   <div style="position:absolute;bottom:0;right:0;width:400px;height:400px;background:radial-gradient(ellipse at bottom right,rgba(184,151,90,0.1),transparent 70%);pointer-events:none;"></div>
 
-  <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;">
+  <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:3rem;" class="contact-grid">
 
-    <!-- Left: info -->
-    <div class="reveal">
+    <!-- Left: form -->
+    <div class="reveal" style="background:#FFFFFF;padding:2.75rem;box-shadow:0 8px 40px rgba(26,23,20,0.08),0 2px 8px rgba(26,23,20,0.04);">
+      <form id="quote-form" onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:1.25rem;">
+
+        <input type="hidden" name="access_key" value="5e7fa305-9279-4411-90bd-75fc34a93e47" />
+        <input type="hidden" name="subject" value="New Quote Request — MANE Cleaning Services" />
+        <input type="hidden" name="from_name" value="MANE Cleaning Website" />
+        <input type="hidden" name="redirect" value="false" />
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;" class="two-col-grid">
+          <div>
+            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">First Name</label>
+            <input type="text" name="first_name" placeholder="Jane" required style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
+          </div>
+          <div>
+            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Last Name</label>
+            <input type="text" name="last_name" placeholder="Smith" required style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
+          </div>
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Email</label>
+          <input type="email" name="email" placeholder="jane@example.com" required style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Phone (optional)</label>
+          <input type="tel" name="phone" placeholder="(555) 000-0000" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Service Type</label>
+          <select name="service_type" required style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;appearance:none;transition:border-color 0.2s ease;cursor:pointer;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'">
+            <option value="" disabled selected>Select a service…</option>
+            <option>Residential — Regular Clean</option>
+            <option>Residential — Deep Clean</option>
+            <option>Residential — Move-In / Move-Out</option>
+            <option>Commercial — Office Cleaning</option>
+            <option>Commercial — Retail / Showroom</option>
+            <option>Specialty — Carpet & Upholstery</option>
+            <option>Specialty — Airbnb Turnover</option>
+            <option>Other / Custom Request</option>
+          </select>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;" class="two-col-grid">
+          <div>
+            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Preferred Date</label>
+            <input type="date" name="preferred_date" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
+          </div>
+          <div>
+            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Preferred Time</label>
+            <select name="preferred_time" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;appearance:none;transition:border-color 0.2s ease;cursor:pointer;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'">
+              <option value="" disabled selected>Select a time…</option>
+              <option>Morning (8am – 12pm)</option>
+              <option>Afternoon (12pm – 4pm)</option>
+              <option>Evening (4pm – 7pm)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Message</label>
+          <textarea name="message" placeholder="Tell us about your space, preferred dates, or any specific requests…" rows="4" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;resize:vertical;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="justify-content:center;margin-top:0.25rem;">
+          Send Request
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <p style="font-size:0.75rem;font-weight:300;color:#9B9690;text-align:center;line-height:1.5;">
+          We'll respond within 24 hours. No spam, no pressure — just a friendly quote.
+        </p>
+      </form>
+    </div>
+
+    <!-- Right: info -->
+    <div class="reveal reveal-delay-1">
       <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
         <div style="width:32px;height:1px;background:#B8975A;"></div>
         <span style="font-size:0.75rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#B8975A;">Get in Touch</span>
@@ -731,85 +843,7 @@
             <div style="font-size:0.9375rem;font-weight:500;color:#1A1714;">Durham Region and surrounding areas</div>
           </div>
         </div>
-
       </div>
-    </div>
-
-    <!-- Right: form -->
-    <div class="reveal reveal-delay-1" style="background:#FFFFFF;padding:2.75rem;box-shadow:0 8px 40px rgba(26,23,20,0.08),0 2px 8px rgba(26,23,20,0.04);">
-      <form id="quote-form" onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:1.25rem;">
-
-        <input type="hidden" name="access_key" value="5e7fa305-9279-4411-90bd-75fc34a93e47" />
-        <input type="hidden" name="subject" value="New Quote Request — MANE Cleaning Services" />
-        <input type="hidden" name="from_name" value="MANE Cleaning Website" />
-        <input type="hidden" name="redirect" value="false" />
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
-          <div>
-            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">First Name</label>
-            <input type="text" name="first_name" placeholder="Jane" required style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
-          </div>
-          <div>
-            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Last Name</label>
-            <input type="text" name="last_name" placeholder="Smith" required style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
-          </div>
-        </div>
-
-        <div>
-          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Email</label>
-          <input type="email" name="email" placeholder="jane@example.com" required style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
-        </div>
-
-        <div>
-          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Phone (optional)</label>
-          <input type="tel" name="phone" placeholder="(555) 000-0000" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
-        </div>
-
-        <div>
-          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Service Type</label>
-          <select name="service_type" required style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;appearance:none;transition:border-color 0.2s ease;cursor:pointer;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'">
-            <option value="" disabled selected>Select a service…</option>
-            <option>Residential — Regular Clean</option>
-            <option>Residential — Deep Clean</option>
-            <option>Residential — Move-In / Move-Out</option>
-            <option>Commercial — Office Cleaning</option>
-            <option>Commercial — Retail / Showroom</option>
-            <option>Specialty — Carpet & Upholstery</option>
-            <option>Specialty — Airbnb Turnover</option>
-            <option>Other / Custom Request</option>
-          </select>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
-          <div>
-            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Preferred Date</label>
-            <input type="date" name="preferred_date" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'" />
-          </div>
-          <div>
-            <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Preferred Time</label>
-            <select name="preferred_time" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;appearance:none;transition:border-color 0.2s ease;cursor:pointer;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'">
-              <option value="" disabled selected>Select a time…</option>
-              <option>Morning (8am – 12pm)</option>
-              <option>Afternoon (12pm – 4pm)</option>
-              <option>Evening (4pm – 7pm)</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#9B9690;margin-bottom:0.5rem;">Message</label>
-          <textarea name="message" placeholder="Tell us about your space, preferred dates, or any specific requests…" rows="4" style="width:100%;padding:0.75rem 1rem;border:1px solid #EDE9DF;background:#FAFAF8;font-family:'DM Sans',sans-serif;font-size:0.9375rem;color:#1A1714;outline:none;resize:vertical;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='#B8975A'" onblur="this.style.borderColor='#EDE9DF'"></textarea>
-        </div>
-
-        <button type="submit" class="btn-primary" style="justify-content:center;margin-top:0.25rem;">
-          Send Request
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-
-        <p style="font-size:0.75rem;font-weight:300;color:#9B9690;text-align:center;line-height:1.5;">
-          We'll respond within 24 hours. No spam, no pressure — just a friendly quote.
-        </p>
-      </form>
     </div>
 
   </div>
