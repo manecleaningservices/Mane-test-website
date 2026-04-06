@@ -516,16 +516,16 @@
         Get an Instant Estimate
       </h2>
       <p style="font-size:0.9375rem;font-weight:300;line-height:1.7;color:rgba(245,242,236,0.55);margin-top:0.75rem;">
-        Select your home size and service type for a rough price guide.
+        Select your home size for a deep clean estimate.
       </p>
     </div>
 
     <!-- Calculator card -->
     <div style="background:rgba(245,242,236,0.04);border:1px solid rgba(245,242,236,0.1);padding:2.5rem;backdrop-filter:blur(8px);" class="reveal reveal-delay-1">
 
-      <!-- Step 1: Home Size -->
+      <!-- Home Size -->
       <div style="margin-bottom:2rem;">
-        <p style="font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#B8975A;margin-bottom:1rem;">1 — Home Size</p>
+        <p style="font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#B8975A;margin-bottom:1rem;">Home Size</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;" id="size-grid">
           <button onclick="selectSize(this,'studio')" data-size="studio" class="calc-size-btn" style="padding:0.875rem 0.5rem;border:1px solid rgba(245,242,236,0.15);background:transparent;color:rgba(245,242,236,0.7);font-family:'DM Sans',sans-serif;font-size:0.8125rem;font-weight:500;cursor:pointer;transition:border-color 0.2s ease,background 0.2s ease,color 0.2s ease;text-align:center;line-height:1.4;">
             Studio / 1 Bed<br/><span style="font-size:0.7rem;opacity:0.6;">1 Bath</span>
@@ -548,34 +548,10 @@
         </div>
       </div>
 
-      <!-- Step 2: Service Type -->
-      <div style="margin-bottom:2rem;">
-        <p style="font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#B8975A;margin-bottom:1rem;">2 — Service Type</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">
-          <button onclick="selectService(this,'standard')" data-service="standard" class="calc-service-btn" style="padding:0.875rem 0.5rem;border:1px solid rgba(245,242,236,0.15);background:transparent;color:rgba(245,242,236,0.7);font-family:'DM Sans',sans-serif;font-size:0.8125rem;font-weight:500;cursor:pointer;transition:border-color 0.2s ease,background 0.2s ease,color 0.2s ease;text-align:center;">
-            Standard Clean<br/><span style="font-size:0.65rem;opacity:0.5;">(Not available for first time clean)</span>
-          </button>
-          <button onclick="selectService(this,'deep')" data-service="deep" class="calc-service-btn" style="padding:0.875rem 0.5rem;border:1px solid rgba(245,242,236,0.15);background:transparent;color:rgba(245,242,236,0.7);font-family:'DM Sans',sans-serif;font-size:0.8125rem;font-weight:500;cursor:pointer;transition:border-color 0.2s ease,background 0.2s ease,color 0.2s ease;text-align:center;">
-            Deep Clean
-          </button>
-          <button onclick="selectService(this,'moveinout')" data-service="moveinout" class="calc-service-btn" style="padding:0.875rem 0.5rem;border:1px solid rgba(245,242,236,0.15);background:transparent;color:rgba(245,242,236,0.7);font-family:'DM Sans',sans-serif;font-size:0.8125rem;font-weight:500;cursor:pointer;transition:border-color 0.2s ease,background 0.2s ease,color 0.2s ease;text-align:center;">
-            Move-In / Move-Out
-          </button>
-        </div>
-      </div>
-
-      <!-- Step 3: Recurring -->
-      <div style="margin-bottom:2.5rem;">
-        <p style="font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#B8975A;margin-bottom:1rem;">3 — Frequency</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
-          <button onclick="selectFreq(this,'once')" data-freq="once" class="calc-freq-btn" style="padding:0.875rem;border:1px solid rgba(245,242,236,0.15);background:transparent;color:rgba(245,242,236,0.7);font-family:'DM Sans',sans-serif;font-size:0.8125rem;font-weight:500;cursor:pointer;transition:border-color 0.2s ease,background 0.2s ease,color 0.2s ease;text-align:center;">
-            One-Time
-          </button>
-          <button onclick="selectFreq(this,'recurring')" data-freq="recurring" class="calc-freq-btn" style="padding:0.875rem;border:1px solid rgba(245,242,236,0.15);background:transparent;color:rgba(245,242,236,0.7);font-family:'DM Sans',sans-serif;font-size:0.8125rem;font-weight:500;cursor:pointer;transition:border-color 0.2s ease,background 0.2s ease,color 0.2s ease;text-align:center;">
-            Recurring <span style="color:#B8975A;font-size:0.7rem;">(Save 10%)</span>
-          </button>
-        </div>
-      </div>
+      <!-- Discount note -->
+      <p style="font-size:0.8125rem;font-weight:300;color:rgba(245,242,236,0.45);margin-top:-0.5rem;margin-bottom:2rem;line-height:1.6;">
+        <span style="color:#B8975A;font-weight:500;">Discounts available</span> for recurring cleans and standard cleans. Contact us for details.
+      </p>
 
       <!-- Divider -->
       <div style="height:1px;background:rgba(245,242,236,0.08);margin-bottom:2rem;"></div>
@@ -1075,12 +1051,12 @@
 
   // ── Quote Calculator ──
   const pricing = {
-    studio:  { standard: 140, deep: 205, moveinout: 235 },
-    '2bed':  { standard: 180, deep: 265, moveinout: 305 },
-    '3bed':  { standard: 225, deep: 335, moveinout: 385 },
-    '4bed':  { standard: 285, deep: 420, moveinout: 485 },
-    '5bed':  { standard: 360, deep: 530, moveinout: 610 },
-    '6bed':  { standard: null, deep: null, moveinout: null },
+    studio: 205,
+    '2bed': 265,
+    '3bed': 335,
+    '4bed': 420,
+    '5bed': 530,
+    '6bed': null,
   };
   const notes = {
     studio: 'High demand — book in advance.',
@@ -1091,7 +1067,7 @@
     '6bed': '',
   };
 
-  let calcState = { size: null, service: null, freq: null };
+  let calcState = { size: null };
 
   function selectSize(btn, val) {
     document.querySelectorAll('.calc-size-btn').forEach(b => {
@@ -1106,59 +1082,14 @@
     updateResult();
   }
 
-  function selectService(btn, val) {
-    document.querySelectorAll('.calc-service-btn').forEach(b => {
-      b.style.background = 'transparent';
-      b.style.borderColor = 'rgba(245,242,236,0.15)';
-      b.style.color = 'rgba(245,242,236,0.7)';
-    });
-    btn.style.background = 'rgba(184,151,90,0.15)';
-    btn.style.borderColor = '#B8975A';
-    btn.style.color = '#F5F2EC';
-    calcState.service = val;
-
-    // Disable recurring option for move-in/move-out
-    const recurringBtn = document.querySelector('.calc-freq-btn[data-freq="recurring"]');
-    if (val === 'moveinout') {
-      recurringBtn.disabled = true;
-      recurringBtn.style.opacity = '0.3';
-      recurringBtn.style.cursor = 'not-allowed';
-      recurringBtn.style.background = 'transparent';
-      recurringBtn.style.borderColor = 'rgba(245,242,236,0.15)';
-      recurringBtn.style.color = 'rgba(245,242,236,0.7)';
-      if (calcState.freq === 'recurring') {
-        calcState.freq = null;
-      }
-    } else {
-      recurringBtn.disabled = false;
-      recurringBtn.style.opacity = '1';
-      recurringBtn.style.cursor = 'pointer';
-    }
-
-    updateResult();
-  }
-
-  function selectFreq(btn, val) {
-    document.querySelectorAll('.calc-freq-btn').forEach(b => {
-      b.style.background = 'transparent';
-      b.style.borderColor = 'rgba(245,242,236,0.15)';
-      b.style.color = 'rgba(245,242,236,0.7)';
-    });
-    btn.style.background = 'rgba(184,151,90,0.15)';
-    btn.style.borderColor = '#B8975A';
-    btn.style.color = '#F5F2EC';
-    calcState.freq = val;
-    updateResult();
-  }
-
   function updateResult() {
     const el = document.getElementById('calc-result');
-    const { size, service, freq } = calcState;
-    if (!size || !service || !freq) {
-      el.innerHTML = '<p style="font-size:0.875rem;font-weight:300;color:rgba(245,242,236,0.35);letter-spacing:0.04em;">Select your options above to see an estimate</p>';
+    const { size } = calcState;
+    if (!size) {
+      el.innerHTML = '<p style="font-size:0.875rem;font-weight:300;color:rgba(245,242,236,0.35);letter-spacing:0.04em;">Select your home size above to see an estimate</p>';
       return;
     }
-    const base = pricing[size][service];
+    const base = pricing[size];
     if (base === null) {
       el.innerHTML = `
         <div style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#B8975A;letter-spacing:-0.03em;line-height:1;">Custom Quote</div>
@@ -1167,65 +1098,43 @@
       `;
       return;
     }
-    let low, high, discountLine = '';
-    if (freq === 'recurring') {
-      low = high = Math.round(base * 0.90);
-      discountLine = '<p style="font-size:0.8125rem;font-weight:500;color:#B8975A;margin-top:0.4rem;letter-spacing:0.04em;">10% recurring discount applied</p>';
-    } else {
-      low = high = base;
-    }
-    const range = low === high ? `$${low}` : `$${low} – $${high}`;
     const note = notes[size] ? `<p style="font-size:0.8125rem;font-weight:300;color:rgba(245,242,236,0.45);margin-top:0.5rem;">${notes[size]}</p>` : '';
     el.innerHTML = `
-      <p style="font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,242,236,0.4);margin-bottom:0.5rem;">Estimated Price</p>
-      <div style="font-family:'Playfair Display',serif;font-size:3.25rem;font-weight:700;color:#F5F2EC;letter-spacing:-0.03em;line-height:1;">${range}</div>
-      ${discountLine}
+      <p style="font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,242,236,0.4);margin-bottom:0.5rem;">Deep Clean — Estimated Price</p>
+      <div style="font-family:'Playfair Display',serif;font-size:3.25rem;font-weight:700;color:#F5F2EC;letter-spacing:-0.03em;line-height:1;">$${base}</div>
       ${note}
       <button onclick="bookThisClean()" class="btn-primary" style="margin-top:1.75rem;font-size:0.8125rem;padding:0.8rem 1.75rem;display:inline-flex;border:none;cursor:pointer;background:#F5F2EC;color:#1A1714;">Book This Clean →</button>
     `;
   }
 
   // ── Book This Clean: pre-fill contact form from calculator ──
-  const sizeLabels    = { studio:'Studio / 1 Bed · 1 Bath', '2bed':'2 Bed · 1–2 Bath', '3bed':'3 Bed · 2 Bath', '4bed':'4 Bed · 2–3 Bath', '5bed':'5 Bed · 3+ Bath', '6bed':'6+ Bed / Large Estate' };
-  const serviceLabels = { standard:'Standard Clean', deep:'Deep Clean', moveinout:'Move-In / Move-Out' };
-  const serviceMap    = { standard:'Residential — Regular Clean', deep:'Residential — Deep Clean', moveinout:'Residential — Move-In / Move-Out' };
+  const sizeLabels = { studio:'Studio / 1 Bed · 1 Bath', '2bed':'2 Bed · 1–2 Bath', '3bed':'3 Bed · 2 Bath', '4bed':'4 Bed · 2–3 Bath', '5bed':'5 Bed · 3+ Bath', '6bed':'6+ Bed / Large Estate' };
 
   function bookThisClean() {
-    const { size, service, freq } = calcState;
+    const { size } = calcState;
     const contactSection = document.getElementById('contact');
     contactSection.scrollIntoView({ behavior: 'smooth' });
 
     setTimeout(() => {
-      // Pre-fill service dropdown if matched
-      if (service) {
-        const select = document.querySelector('select[name="service_type"]');
-        if (select) {
-          const match = serviceMap[service];
-          for (let opt of select.options) {
-            if (opt.text === match) { select.value = opt.value; break; }
-          }
-          select.style.borderColor = '#B8975A';
-          setTimeout(() => select.style.borderColor = '#EDE9DF', 2000);
+      // Pre-fill service dropdown to Deep Clean
+      const select = document.querySelector('select[name="service_type"]');
+      if (select) {
+        for (let opt of select.options) {
+          if (opt.text === 'Residential — Deep Clean') { select.value = opt.value; break; }
         }
+        select.style.borderColor = '#B8975A';
+        setTimeout(() => select.style.borderColor = '#EDE9DF', 2000);
       }
 
       // Build message summary
       const textarea = document.querySelector('textarea[name="message"]');
-      if (textarea && size && service && freq) {
-        const base = pricing[size][service];
-        let priceStr;
-        if (base === null) {
-          priceStr = 'Custom quote required';
-        } else if (freq === 'recurring') {
-          priceStr = `$${Math.round(base * 0.90)} (10% recurring discount applied)`;
-        } else {
-          priceStr = `$${base}`;
-        }
+      if (textarea && size) {
+        const base = pricing[size];
+        const priceStr = base === null ? 'Custom quote required' : `$${base}`;
         textarea.value =
           `Hi! I used the quote calculator and got the following estimate:\n\n` +
           `• Home Size: ${sizeLabels[size]}\n` +
-          `• Service Type: ${serviceLabels[service]}\n` +
-          `• Frequency: ${freq === 'recurring' ? 'Recurring' : 'One-Time'}\n` +
+          `• Service Type: Deep Clean\n` +
           `• Estimated Price: ${priceStr}\n\n` +
           `Please confirm availability and final pricing. Thanks!`;
         textarea.style.borderColor = '#B8975A';
