@@ -1138,7 +1138,7 @@
       const select = document.querySelector('select[name="service_type"]');
       if (select) {
         for (let opt of select.options) {
-          if (opt.text === 'Residential — Deep Clean') { select.value = opt.value; break; }
+          if (opt.text === 'Residential — Regular Clean') { select.value = opt.value; break; }
         }
         select.style.borderColor = '#B8975A';
         setTimeout(() => select.style.borderColor = '#EDE9DF', 2000);
