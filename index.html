@@ -328,6 +328,12 @@
       <a href="#calculator" class="btn-primary" style="margin-left:0.5rem;">Get a Quote</a>
     </nav>
 
+    <!-- Mobile phone number -->
+    <a href="tel:+14374940326" id="mobile-phone" style="display:none;align-items:center;gap:0.375rem;font-family:'DM Sans',sans-serif;font-size:0.8125rem;font-weight:500;color:#1A1714;text-decoration:none;letter-spacing:0.02em;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8975A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 011 1.18 2 2 0 012.99 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+      (437) 494-0326
+    </a>
+
     <!-- Mobile hamburger -->
     <button id="hamburger" aria-label="Open menu" style="display:none;background:none;border:none;cursor:pointer;padding:4px;">
       <svg width="24" height="24" fill="none" stroke="#1A1714" stroke-width="1.5" stroke-linecap="round">
@@ -976,6 +982,7 @@
     const desktop = window.innerWidth >= 768;
     document.querySelector('.hidden-mobile').style.display = desktop ? 'flex' : 'none';
     hamburger.style.display = desktop ? 'none' : 'block';
+    document.getElementById('mobile-phone').style.display = desktop ? 'none' : 'flex';
   }
   checkWidth();
   window.addEventListener('resize', checkWidth, { passive: true });
